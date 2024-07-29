@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({ email: "", password: "" });
 
   const onInputChange = (e) => {
     const newFormData = { ...formData, [e.target.name]: e.target.value };
@@ -30,8 +30,8 @@ const Login = () => {
 
       if (response.ok) {
         const user = await response.json();
-        navigate("/");
         storeToLocalStorage(user);
+        navigate("/");
       } else {
         throw new Error(response.statusText);
       }

@@ -1,16 +1,24 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Dashboard = (props) => {
+const Dashboard = () => {
+  const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const fetchOrders = async () => {
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (!user) {
+        navigate("/login");
+      }
+
       try {
         const response = await fetch(
           "https://api-car-rental.binaracademy.org/customer/v2/order",
           {
             headers: {
-              access_token: props.user.access_token,
+              access_token: user.access_token,
             },
           }
         );
@@ -22,7 +30,7 @@ const Dashboard = (props) => {
     };
 
     fetchOrders();
-  }, [props.user.access_token]);
+  }, [navigate]);
 
   return (
     <ul>
