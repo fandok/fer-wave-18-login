@@ -41,22 +41,30 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={onHandleSubmit}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" onChange={onInputChange} />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          onChange={onInputChange}
-        />
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <>
+      <h1>Halaman Login</h1>
+      <form onSubmit={onHandleSubmit}>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            onChange={onInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            onChange={onInputChange}
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </>
   );
 };
 
